@@ -48,6 +48,26 @@ async def read_items(user_name: str, key: str, groupid: int, role_number: int):
      return ("The user had their ranked changed")
     else:
         return "Incorrect key"
+    
+    @app.get("/group/shout/")
+async def read_items(text: str, key: str, groupid: int):
+    if key == APIKEY:
+     group = await client.get_group(groupid)
+     target = await group.get_member_by_username(user_name)
+     await group.shout(text)
+     return ("The user had their ranked changed")
+    else:
+        return "Incorrect key"
+    
+    @app.get("/group/exile/")
+async def read_items(user_name: str, key: str, groupid: int):
+    if key == APIKEY:
+     group = await client.get_group(groupid)
+     target = await group.get_member_by_username(user_name)
+     await target.exile()
+     return ("The user had their ranked changed")
+    else:
+        return "Incorrect key"
 
 @app.get("/group/members/")
 async def read_items(key: str, groupid: int):
