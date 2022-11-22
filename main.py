@@ -55,7 +55,7 @@ async def read_items(text: str, key: str, groupid: int):
      group = await client.get_group(groupid)
      target = await group.get_member_by_username(user_name)
      await group.shout(text)
-     return ("The user had their ranked changed")
+     return ("Sent shout.")
     else:
         return "Incorrect key"
     
@@ -65,7 +65,7 @@ async def read_items(user_name: str, key: str, groupid: int):
      group = await client.get_group(groupid)
      target = await group.get_member_by_username(user_name)
      await target.exile()
-     return ("The user had their ranked changed")
+     return ("Exiled user")
     else:
         return "Incorrect key"
 
